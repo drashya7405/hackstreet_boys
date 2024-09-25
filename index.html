@@ -1,0 +1,236 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitoring</title>
+</head>
+<body>
+    <h1>Wearable Health Monitoring System</h1>
+
+     Registration Form -->
+    <!-- <h2>Register</h2>
+    <form id="registerForm">
+        <input type="text" id="name" placeholder="Name" required><br>
+        <input type="email" id="email" placeholder="Email" required><br>
+        <input type="password" id="password" placeholder="Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required><br>
+        <input type="password" id="loginPassword" placeholder="Password" required><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <h2>Submit Health Data</h2>
+    <form id="healthForm">
+        <input type="number" id="heartRate" placeholder="Heart Rate (BPM)" required><br>
+        <input type="number" id="steps" placeholder="Steps Taken" required><br>
+        <input type="number" id="sleepHours" placeholder="Hours of Sleep" required><br>
+        <button type="submit">Submit Health Data</button>
+    </form>
+
+    <h2>Your Health Data</h2>
+    <div id="healthData"></div>
+
+    <script>
+        let token = '';
+
+        // Handle registration
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const res = await fetch('http://localhost:5000/api/users/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            });
+            const data = await res.json();
+            console.log(data);
+        });
+
+        // Handle login
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword'). -->
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Wearable Health Monitoring System</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f0f0f0;
+                    }
+                    .container {
+                        max-width: 800px;
+                        margin: 0 auto;
+                        padding: 20px;
+                        background-color: white;
+                        border-radius: 8px;
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h1, h2 {
+                        text-align: center;
+                    }
+                    form {
+                        margin: 20px 0;
+                    }
+                    input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+                        width: 100%;
+                        padding: 10px;
+                        margin: 8px 0;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+                    button {
+                        padding: 10px 20px;
+                        background-color: #007BFF;
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    }
+                    button:hover {
+                        background-color: #0056b3;
+                    }
+                    .health-data {
+                        background-color: #e0f7fa;
+                        padding: 10px;
+                        margin-top: 20px;
+                        border-radius: 4px;
+                    }
+                    .health-data-item {
+                        margin-bottom: 10px;
+                    }
+                </style>
+            </head>
+            <body>
+            
+                <div class="container">
+                    <h1>Wearable Health Monitoring System</h1>
+            
+                    <!-- Registration Form -->
+                    <h2>Register</h2>
+                    <form id="registerForm">
+                        <input type="text" id="name" placeholder="Name" required><br>
+                        <input type="email" id="email" placeholder="Email" required><br>
+                        <input type="password" id="password" placeholder="Password" required><br>
+                        <button type="submit">Register</button>
+                    </form>
+            
+                    <!-- Login Form -->
+                    <h2>Login</h2>
+                    <form id="loginForm">
+                        <input type="email" id="loginEmail" placeholder="Email" required><br>
+                        <input type="password" id="loginPassword" placeholder="Password" required><br>
+                        <button type="submit">Login</button>
+                    </form>
+            
+                    <!-- Health Data Submission Form -->
+                    <h2>Submit Health Data</h2>
+                    <form id="healthForm">
+                        <input type="number" id="heartRate" placeholder="Heart Rate (BPM)" required><br>
+                        <input type="number" id="steps" placeholder="Steps Taken" required><br>
+                        <input type="number" id="sleepHours" placeholder="Hours of Sleep" required><br>
+                        <button type="submit">Submit Health Data</button>
+                    </form>
+            
+                    <h2>Your Health Data</h2>
+                    <div id="healthData" class="health-data"></div>
+                </div>
+            
+                <script>
+                    let token = '';
+            
+                    // Handle registration
+                    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const name = document.getElementById('name').value;
+                        const email = document.getElementById('email').value;
+                        const password = document.getElementById('password').value;
+            
+                        const res = await fetch('http://localhost:5000/api/users/register', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ name, email, password })
+                        });
+                        const data = await res.json();
+                        alert(data.msg || "Registration successful");
+                    });
+            
+                    // Handle login
+                    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const email = document.getElementById('loginEmail').value;
+                        const password = document.getElementById('loginPassword').value;
+            
+                        const res = await fetch('http://localhost:5000/api/users/login', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, password })
+                        });
+                        const data = await res.json();
+                        if (data.token) {
+                            token = data.token;
+                            alert('Login successful!');
+                        } else {
+                            alert('Login failed. Check your credentials.');
+                        }
+                    });
+            
+                    // Submit health data
+                    document.getElementById('healthForm').addEventListener('submit', async function(e) {
+                        e.preventDefault();
+                        const heartRate = document.getElementById('heartRate').value;
+                        const steps = document.getElementById('steps').value;
+                        const sleepHours = document.getElementById('sleepHours').value;
+            
+                        const res = await fetch('http://localhost:5000/api/health', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': token
+                            },
+                            body: JSON.stringify({ heartRate, steps, sleepHours })
+                        });
+                        const data = await res.json();
+                        alert(data.msg || "Health data submitted");
+            
+                        // Refresh health data
+                        loadHealthData();
+                    });
+            
+                    // Load health data
+                    async function loadHealthData() {
+                        const res = await fetch('http://localhost:5000/api/health', {
+                            method: 'GET',
+                            headers: {
+                                'Authorization': token
+                            }
+                        });
+                        const data = await res.json();
+                        const healthDataDiv = document.getElementById('healthData');
+                        healthDataDiv.innerHTML = data.map(item => `
+                            <div class="health-data-item">
+                                <p>Date: ${new Date(item.date).toLocaleString()}</p>
+                                <p>Heart Rate: ${item.heartRate} BPM</p>
+                                <p>Steps: ${item.steps}</p>
+                                <p>Sleep: ${item.sleepHours} hours</p>
+                            </div>
+                        `).join('');
+                    }
+                </script>
+            
+            </body>
+            </html>
